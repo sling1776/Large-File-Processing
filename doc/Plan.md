@@ -19,7 +19,7 @@ Need to learn how to use split better to only split on one comma. and then be ab
 the output. 
 
 remove overlapping AreaFIPS. there is going to be an easy way to do this. ->study the document online of 
-areafips naming.
+areafips naming. remove trailing 000 areas
 
 This is kind of like cut, might need to review the concepts of it to pull the information out of the singlefile.
 
@@ -31,75 +31,73 @@ of each of the three values.
 I will need to count the number of FIPS that I use and keep the software separate from the totals.
 
 I will need a dictionary with the FIPS mapped to the name. 
-I should probably save a second dictionary with the FIPS mapped to a list of the desired numbers. 
+
+ways to determine which FIPS I want to read:
+    isdigit: will remove any CSA, MSA, MicroSA, U.S COmbined, and TOTAL areas
+    XX000: will remove any statewide and FBI areas
+
+
 
 # 2.  Functional Examples
+def main():
+    open areaTitle
+    map area code to name
+    close the file
+    open singlefile
+    for all lines in file
+        pull FIPS from line
+        if FIPS isdigit and doesn't have three 0's
+            pull job codes
+            if job codes 0 and 10
+                pull Total wage, estab, and employ
+                turn into integers
+                add 1 to total count
+                add wage to total wage
+                add esab to total estab
+                add employ to total employ
+                if max wage < wage 
+                    replace
+                if max estab < estab
+                    replace
+                if max employ < employ
+                    replace
+            else if job codes 5 and 5112
+                same as above but for software
+            else: 
+                continue
+        else 
+            continue
+    give report object the needed information
+    close the file
 
-**Design a process for obtaining the output from the input.  Consider both *good*
-and *bad* inputs.  Find or create examples of both kinds of input.**
-
-**Work out problem examples on paper, on a whiteboard or some other medium that
-is *not* your computer.  It is a mistake to begin writing executable code
-before you thoroughly understand what form the algorithm(s) must take.**
-
-**Instead, describe components of the system in *"pseudocode"*.  Expect to make
-lots of mistakes at this point.  You will find that it is much easier to throw
-away pseudocode than real code.**
-
-**Manually work through several examples that illustrate the program's overall
-purpose, as well as the purpose of each component of the finished system.  You
-will converge on a correct solution much faster if you feel comfortable making
-mistakes as you go.**
-
-**This phase involves the use of many levels of abstraction to decompose the
-problem into manageable components, and design strategies for implementing each
-component.  Components may be functions, modules or classes.**
-
+def pull(line, desiredColumn):
+    split line by ,
+    access the correct location
+    remove "
+    return infoInColumn (string)
 
 # 3.  Function Template
 
-**Combine the function stubs written in step #2 with pseudocode from step #3.
-Comment out the pseudocode, leaving a valid program that compiles/runs without
-errors.  At this stage your program doesn't quite work, but it also doesn't
-crash.**
+/* main: will open the files and then find the needed information. it will then give the
+* inforamtion to a report object and let it print it out.
+*/
 
+/* pull: will pull the needed information out of a line given to it.*/
 
 # 4.  Implementation
 
-**This is the only part of the process focused on writing code in your chosen
-programming language.**
-
-**One by one translate passages of pseudocode into valid code.  Fill in the gaps
-in the function template.  Exploit the purpose statement and the examples.**
-
-**If you were thorough in the previous steps and are familiar with your
-programming system this part will go by very quickly and the code will write
-itself.**
-
-**When you are learning a new programming language or an unfamiliar library this
-phase can be slow and difficult.  As you gain experience with the relevant
-technologies you will spend less and less time in this phase of the process.**
-
+Completed implementation
 
 # 5.  Testing
 
-**Articulate the examples given in step #2 as tests and ensure that each
-function passes all of its tests.  Doing so discovers mistakes.  Tests also
-supplement examples in that they help others read and understand the definition
-when the need arises—and it will arise for any serious program.**
+need to verify that I am allowed to use owncode and industrycode and that it won't 
+affect the contrived data results. Currently my code works for the given inputs.
 
-**As bugs are discovered and fixed, devise new test cases that will detect these
-problems should they return.**
+python src/main.py data/DC_combined
+    output should match exactly DC_combined/output.txt
 
-**If you didn't come across any bugs (lucky you!) think of a possible flaw and a
-test that can be employed to screen for it.**
+can do all other tests in data
 
-**At a minimum you should create a document explaining step-by-step how a
-non-technical user may manually test your program to satisfy themselves that it
-operates correctly.  Explain the entire process starting how to launch the
-program, what inputs they should give and what results they should see at every
-step.  Provide test cases of good and bad inputs to catch both false positives
-and false negatives.  Any deviation from the expected outputs are errors.**
-
-**The ideal is to write an automated test to avoid all manual labor beyond
-launching the test.**
+Note: DE_* has many zeros in it and so to make sure it still works we need to make 
+    sure that we only check for the last three digits of the FIPS being zeros. not 
+    that there are three zeros in it. 
