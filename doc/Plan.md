@@ -3,47 +3,35 @@
 *Adapted from https://htdp.org/2020-5-6/Book/part_preface.html*
 
 # 0.  From Problem Analysis to Data Definitions
+ The program is going to take a the large CSV file and calculate the economy report of the different areas. 
+ Sepcifically It will give the total annual wages, number of establisments, and the employment level.
+ It will also give the max wage, max establishment, and max employment level along with the locations of 
+ these places. It will also print a specific software industry report very similar to the total economy report
+ but this time only dealing with software. It will also give the number of FIPS areas in the report.
 
-**Problem Analysis is the process of understanding the problem the software
-will address and to document in detail what the software system needs to do.
-In the real world this phase demands close interaction between developers and
-the client.  Ideally, end-users of the system are interviewed for their input.**
-
-**In this course you will receive detailed requirements in the form of the
-assignment description.  I stand-in for the client and end-users when you have
-questions concerning their needs and desires.**
-
-**In this phase of the design process you should use [The Feynman
-Technique](https://www.youtube.com/watch?v=tkm0TNFzIeg) To ensure that you
-understand what is being asked of you.**
-
-**The output of this phase of the development process is a restatement of the
-requirements in your own words.  Putting new problems into your own words will
-help you identify your "Known knowns" and your "known unknowns".**
-
-**As part of your restatement of the problem identify information that must be
-represented and decide how to represent in the chosen programming language.**
-
-**Formulate data definitions and illustrate them with examples.**
 
 
 # 1.  System Analysis
+Open two large CSV file and then turn the contents into a python dictionary. 
+Both files will be in the same directory.
 
-**Analyze the flow of data throughout the program.  Does the program get input
-from the user?  If so, does it come from interactive prompts or from
-command-line arguments?  Is data incorporated from a file on the disk, from a
-database or from the internet?**
+Need to learn how to use split better to only split on one comma. and then be able to remove quotes from 
+the output. 
 
-**How is output given?  On the screen in the form of text or graphics?  Are
-output files created, and what form do they take?**
+remove overlapping AreaFIPS. there is going to be an easy way to do this. ->study the document online of 
+areafips naming.
 
-**Identify the non-trivial formulas you need to create.  If there aren't any then
-state "no formulas" in this section.**
+This is kind of like cut, might need to review the concepts of it to pull the information out of the singlefile.
 
-**State what kind of data each desired function consumes and produces.  Formulate
-a concise description of what the function computes.  Define a stub that lives
-up to the signature.**
+I need to search the file and get the FIPS to make sure it is not "XX000" then I need to search for either
+a "0","10" for the totals or a "5","5112" for the software. This will give me all the data that I need from the file. 
+I will need to convert the three values I need into an integer. Then I will need to save the max value and its FIPS
+of each of the three values.
 
+I will need to count the number of FIPS that I use and keep the software separate from the totals.
+
+I will need a dictionary with the FIPS mapped to the name. 
+I should probably save a second dictionary with the FIPS mapped to a list of the desired numbers. 
 
 # 2.  Functional Examples
 

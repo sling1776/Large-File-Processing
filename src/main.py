@@ -6,12 +6,16 @@ from Report import Report
 if __name__ == '__main__':
     rpt = Report()
 
-    print("TODO: if sys.argv[1] is not given, print a usage message and exit")  # DELETE ME
+    # if sys.argv[1] is not given, print a usage message and exit
+    if len(sys.argv) != 2:
+        print("Usage: src/main.py DATA_DIRECTORY")
+        sys.exit(1)
 
     print("Reading the databases...", file=sys.stderr)
     before = time.time()
 
     print("TODO: if opening the file 'sys.argv[1]/area_titles.csv' fails, let your program crash here")  # DELETE ME
+    file = open(sys.argv[1] + "/area_titles.csv")
     print("TODO: Convert the file 'sys.argv[1]/area_titles.csv' into a dictionary")  # DELETE ME
 
     print("TODO: if opening the file 'sys.argv[1]/2018.annual.singlefile.csv' fails, let your program crash here")  # DELETE ME
