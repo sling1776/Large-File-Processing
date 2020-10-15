@@ -1,6 +1,3 @@
-*Replace the bold text with your own content*
-
-*Adapted from https://htdp.org/2020-5-6/Book/part_preface.html*
 
 # 0.  From Problem Analysis to Data Definitions
  The program is going to take a the large CSV file and calculate the economy report of the different areas. 
